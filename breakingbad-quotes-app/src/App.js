@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [quote, setQuote] = useState('');
+  const handleRefreshClick = () => {
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    const fetchQuote = async () => {
+      try {
+        const response = await axios.get('https://api.breakingbadquotes.xyz/v1/quotes/5');
+        setQuote(response.data[0].quote);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchQuote();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Breaking Bad Quotes</h1>
+      <p>{quote}</p>
+      <button onClick={ handleRefreshClick }>Next</button>
     </div>
   );
 }
-
 export default App;
