@@ -36,11 +36,13 @@ function App() {
   }, []);
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 300, minHeight:200, backgroundColor: '#ffcccc' }}>
     <div className="App">
       <h1>Breaking Bad Quotes</h1>
       <p>{quote}</p>
-      <button onClick={ handleRefreshClick }>Next</button>
+      <CardActions>
+        <Button size="small"  onClick={ handleRefreshClick } >Next</Button>
+      </CardActions>
     </div>
     </Card>
   );
