@@ -43,9 +43,14 @@ function App() {
       {quote==='' && <p><Box sx={{ display: 'flex' }}> <CircularProgress /></Box></p>}
       {quote!=='' && <p>{quote}</p>}
       <p>Quote's counter: {counter}</p>
+      <p>
       <CardActions>
          <Button variant="contained"  onClick={() => setQuote('')}>Next</Button> 
+         <Button variant="contained">Add to favorites</Button> 
+         <Button variant="contained">Clear my favorites</Button> 
       </CardActions>
+      </p>
+      <h3>My Favorites</h3>
     </div>
     </Card>
   );
