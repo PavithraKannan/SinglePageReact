@@ -19,7 +19,7 @@ const bull = (
 function App() {
   const [quote, setQuote] = useState('');
   const handleRefreshClick = () => {
-    window.location.reload();
+    window.location.reload(); 
   };
 
   useEffect(() => {
@@ -31,9 +31,11 @@ function App() {
         console.error(error);
       }
     };
+    if(quote==='') {
+      fetchQuote();
+    }
 
-    fetchQuote();
-  }, []);
+  }, [quote]);
 
   return (
     <Card sx={{ minWidth: 300, minHeight:200, backgroundColor: '#ffcccc' }}>
@@ -41,7 +43,7 @@ function App() {
       <h1 sx={{ fontColor: "blue"}}>Breaking Bad Quotes</h1>
       <p>{quote}</p>
       <CardActions>
-        <Button variant="contained"  onClick={ handleRefreshClick } >Next</Button>
+        <Button variant="contained"  onClick={ setQuote('') } >Next</Button>
       </CardActions>
     </div>
     </Card>
