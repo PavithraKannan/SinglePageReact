@@ -41,7 +41,8 @@ function App() {
     <Card sx={{ minWidth: 300, minHeight:200, backgroundColor: '#ffcccc' }}>
     <div className="App">
       <h1 sx={{ fontColor: "blue"}}>Breaking Bad Quotes</h1>
-      <p>{quote}</p>
+      {quote==='' && <p>Loading</p>}
+      {quote!=='' && <p>{quote}</p>}
       <CardActions>
         <Button variant="contained"  onClick={ () => setQuote('') } >Next</Button>
       </CardActions>
