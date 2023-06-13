@@ -38,10 +38,10 @@ function App() {
   return (
     <Card sx={{ minWidth: 300, minHeight:200, backgroundColor: '#ffcccc' }}>
     <div className="App">
-      <h1>Breaking Bad Quotes</h1>
+      <h1 sx={{ fontColor: "blue"}}>Breaking Bad Quotes</h1>
       <p>{quote}</p>
       <CardActions>
-        <Button size="small"  onClick={ handleRefreshClick } >Next</Button>
+        <Button variant="contained"  onClick={ handleRefreshClick } >Next</Button>
       </CardActions>
     </div>
     </Card>
