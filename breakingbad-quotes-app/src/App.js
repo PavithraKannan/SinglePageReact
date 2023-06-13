@@ -20,18 +20,28 @@ const bull = (
 
 function App() {
   const [quote, setQuote] = useState('');
-  const [counter, setCounter] = useState(0);
+
   // counter is the state variable, that holds the current value
   // setCounter is the function that is used to update the value
+  const [counter, setCounter] = useState(0);
+ 
 
   //Increment function 
   const incrementCounter = () =>{
-    setCounter(counter+1);
+    setCounter(counter + 1);
   };
-  //This is not a good practise because when we have several api's then the refresh will make many calls which will eventually slow down our website.
-  // const handleRefreshClick = () => {
-  //  window.location.reload(); 
-  // };
+
+  //Setting the quote to empty 
+  const functionOne = () => {
+    setQuote('')
+  };
+
+  //Handling multiple handle clicks 
+  const handleButtonClick = () => {
+    functionOne();
+    incrementCounter();
+  };
+
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -51,11 +61,13 @@ function App() {
   return (
     <Card sx={{ minWidth: 300, minHeight:200, backgroundColor: '#ffcccc' }}>
     <div className="App">
-      <h1 sx={{ fontColor: "blue"}}>Breaking Bad Quotes</h1>
+      <h1>Breaking Bad Quotes</h1>
       {quote==='' && <p><Box sx={{ display: 'flex' }}> <CircularProgress /></Box></p>}
       {quote!=='' && <p>{quote}</p>}
+      <p>Counter: {counter}</p>
       <CardActions>
-        <Button variant="contained"  onClick={ () => setQuote('')}>Next</Button>
+        <Button variant="contained"  onClick={handleButtonClick}>Next</Button>
+         {/* <Button variant="contained"  onClick={() => setQuote('')>Next</Button>  */}
       </CardActions>
     </div>
     </Card>
