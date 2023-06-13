@@ -28,7 +28,7 @@ function App() {
         const response = await axios.get('https://api.breakingbadquotes.xyz/v1/quotes/5');
         setQuote(response.data[0].quote);
       } catch (error) {
-        console.error(error);
+        console.error(error); 
       }
     };
     if(quote==='') {
@@ -43,7 +43,7 @@ function App() {
       <h1 sx={{ fontColor: "blue"}}>Breaking Bad Quotes</h1>
       <p>{quote}</p>
       <CardActions>
-        <Button variant="contained"  onClick={ setQuote('') } >Next</Button>
+        <Button variant="contained"  onClick={ () => setQuote('') } >Next</Button>
       </CardActions>
     </div>
     </Card>
