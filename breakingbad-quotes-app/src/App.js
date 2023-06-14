@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as ReactDOM from 'react-dom';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -19,6 +20,19 @@ const bull = (
 function App() {
   const [quote, setQuote] = useState('');
   const [counter, setCounter] = useState(0);
+
+  const addFavorites = () => {
+    
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    const quoteElement = <p>{quote}</p>
+    root.render(quoteElement);
+  //alert(quote);
+  }
+
+  const deleteFavorites = () => {
+    alert("Cleared the quotes from the list");
+  }
+
 
   useEffect(() => {
     const fetchQuote = async () => {
@@ -46,11 +60,13 @@ function App() {
       <p>
       <CardActions>
          <Button variant="contained"  onClick={() => setQuote('')}>Next</Button> 
-         <Button variant="contained">Add to favorites</Button> 
-         <Button variant="contained">Clear my favorites</Button> 
+         <Button variant="contained" onClick={ addFavorites }>Add to favorites</Button> 
+         <Button variant="contained" onClick={ deleteFavorites }>Clear my favorites</Button> 
       </CardActions>
       </p>
-      <h3>My Favorites</h3>
+      <div>
+        <h3>My Favorites</h3>
+      </div>
     </div>
     </Card>
   );
